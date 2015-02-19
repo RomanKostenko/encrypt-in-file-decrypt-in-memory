@@ -1,4 +1,4 @@
-package in.memory.decoder;
+package in.memory.decryptor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -8,12 +8,9 @@ public interface Decryptor {
 	/**
 	 * Decrypts files by password and embedded encryption
 	 * 
-	 * @param password
-	 *            password for decryption
-	 * @param sourceFiles
-	 *            encrypted files
-	 * @param encryptionInputDirectory
-	 *            directory which contains encryption assets
+	 * @param password password for decryption
+	 * @param sourceFiles encrypted list of files
+	 * @param encryptionInputDirectory directory which contains encryption assets
 	 * @return in memory list of decrypted files
 	 * @throws Exception
 	 */

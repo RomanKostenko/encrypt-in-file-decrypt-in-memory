@@ -1,7 +1,7 @@
-package in.memory.decoder.impl;
+package in.memory.decryptor.impl;
 
-import in.memory.decoder.Decryptor;
-import in.memory.decoder.util.EncryptorDecryptorUtil;
+import in.memory.decryptor.Decryptor;
+import in.memory.decryptor.util.EncryptorDecryptorUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -40,11 +40,13 @@ public class DecryptorImpl implements Decryptor {
 		final SecretKey tmp = factory.generateSecret(keySpec);
 		final SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
 
-		// File decryption
+		// Create cipher for decryption
 		final Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 		cipher.init(Cipher.DECRYPT_MODE, secret, new IvParameterSpec(iv));
 
+		// The list stores in memory representation of decrypted files
 		final List<ByteArrayOutputStream> decryptedTargetsInMemory = new ArrayList<ByteArrayOutputStream>();
+
 		for (final File file : sourceFiles) {
 			final FileInputStream source = new FileInputStream(file);
 			final ByteArrayOutputStream targetInMemory = new ByteArrayOutputStream();

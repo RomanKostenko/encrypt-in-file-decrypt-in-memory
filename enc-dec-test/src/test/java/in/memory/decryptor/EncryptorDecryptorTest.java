@@ -1,7 +1,9 @@
-package in.memory.decoder;
+package in.memory.decryptor;
 
-import in.memory.decoder.impl.DecryptorImpl;
-import in.memory.decoder.impl.EncryptorImpl;
+import in.memory.decryptor.Decryptor;
+import in.memory.decryptor.Encryptor;
+import in.memory.decryptor.impl.DecryptorImpl;
+import in.memory.decryptor.impl.EncryptorImpl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,7 +14,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class EncoderDecoderTest {
+public class EncryptorDecryptorTest {
 
 	public Encryptor encryptor = new EncryptorImpl();
 	public Decryptor decryptor = new DecryptorImpl();

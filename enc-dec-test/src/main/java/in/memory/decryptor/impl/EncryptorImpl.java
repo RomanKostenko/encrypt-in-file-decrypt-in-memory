@@ -1,7 +1,7 @@
-package in.memory.decoder.impl;
+package in.memory.decryptor.impl;
 
-import in.memory.decoder.Encryptor;
-import in.memory.decoder.util.EncryptorDecryptorUtil;
+import in.memory.decryptor.Encryptor;
+import in.memory.decryptor.util.EncryptorDecryptorUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,6 +37,7 @@ public class EncryptorImpl implements Encryptor {
 		final SecretKey secretKey = factory.generateSecret(keySpec);
 		final SecretKey secret = new SecretKeySpec(secretKey.getEncoded(), "AES");
 
+		// Create cipher for encryption
 		final Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, secret);
 		final AlgorithmParameters params = cipher.getParameters();
@@ -54,7 +55,7 @@ public class EncryptorImpl implements Encryptor {
 			final FileInputStream source = new FileInputStream(file);
 			final FileOutputStream target = new FileOutputStream(fileOutputDirectory + File.separator + file.getName());
 
-			// Decrypt files
+			// Encrypt file
 			EncryptorDecryptorUtil.encryptDecrypt(source, target, cipher);
 		}
 	}
